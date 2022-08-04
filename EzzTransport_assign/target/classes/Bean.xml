@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="booking" class="com.org.EzzTransport_assign.Booking" >
+<property name="customername" value="Dheeraj"></property>
+<property name="mobileNumber" value="9493086480"></property>
+<property name="destination" value="Bangalore"></property>
+<property name="dateOfJourney" value="25-06-2000"></property>
+</bean>
+<bean id="vehicle" class="com.org.EzzTransport_assign.Vehicle" >
+<constructor-arg name="source" value="Chennai"/>
+<property name="destinationMap">
+<map>
+<entry key="Bangalore" value="1500"/>
+<entry key="Delhi" value="2500"/>
+<entry key="Mumbai" value="2000"/>
+<entry key="Hyderabad" value="1000"/>
+<entry key="Pune" value="2500"/>
+</map>
+</property>
+</bean>
+<bean id="transportService" class="com.org.EzzTransport_assign.TransportService" autowire="byName"></bean>
+</beans>
