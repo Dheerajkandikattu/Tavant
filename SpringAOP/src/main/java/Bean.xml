@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- AOP........................................ -->
+<bean id="customerService" class="com.org.SpringAOP.CustomerService">
+<property name="name" value="vikas"/>
+<property name="url" value="http://www.jkdl.com"/>
+</bean>
+
+<!-- before advice.............................. -->
+
+<bean id="beforeMethodBean" class="com.org.beforead.BeforeMethod"/>
+<bean id="customerServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+<property name="target" ref="customerService"/>
+<property name="interceptorNames">
+<list>
+<value>beforeMethodBean</value>
+</list>
+</property>
+</bean>
+<bean id="opBean" class="com.org.afterad.Operation"></bean>
+<bean id="trackMyBean" class="com.org.afterad.TrackOperation"></bean>
+<bean class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator"></bean>
+<bean id="opBean1" class="com.org.around.Operation"></bean>
+<bean id="trackMyBean1" class="com.org.around.TrackOperation"></bean>
+
+</beans>

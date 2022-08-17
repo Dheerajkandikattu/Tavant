@@ -1,0 +1,15 @@
+package com.org.tav.SBAccessResource;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+
+@EnableResourceServer
+@SpringBootApplication
+public class SbAccessResourceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SbAccessResourceApplication.class, args);
+	}
+
+}
