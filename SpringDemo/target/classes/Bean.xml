@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="hellobean" class="com.org.SpringDemo.HelloWorldService"></bean>
+<bean id="win" class="com.org.SpringDemo.Vendor1"></bean>
+<bean id="door" class="com.org.SpringDemo.Vendor2"></bean>
+<bean id="emp" class="com.demo.bean.Employee">
+<property name="id" value="101"></property>
+<property name="name" value="Dheeraj"></property>
+<property name="salary" value="10000"></property>
+</bean>
+<bean id="acc" class="com.demo.di.Accountant">
+</bean>
+<bean id="hr" class="com.demo.di.HumanResource"></bean>
+<bean id="manager" class="com.demo.di.Manager">
+<constructor-arg>
+<ref bean="hr"/>
+</constructor-arg>
+<constructor-arg>
+<ref bean="acc"/>
+</constructor-arg>
+
+</bean>
+<bean id="emp1" class="com.demo.di_set.Employee">
+<property name="emp_id" value="101"></property>
+<property name="name" value="Dheeraj"></property>
+<property name="emp_city" value="Kakinada"></property>
+
+</bean>
+<bean id="b" class="com.org.auto.Class_B"></bean>
+<bean id="class_a" class="com.org.auto.Class_A" autowire="byName"></bean>
+</beans>
