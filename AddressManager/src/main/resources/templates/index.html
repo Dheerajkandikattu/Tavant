@@ -1,0 +1,104 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Auto-complete example JQuery</title>
+
+<link rel="stylesheet" href="index.css">
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script th:inline="javascript">
+    var real_data = /*[[${names}]]*/'noValue';
+    $(document).ready(function() {
+        $(".nameInput").autocomplete({
+            minLength : 1,
+            source : real_data,
+            autoFocus:true,
+            
+        })
+    });
+</script>
+</head>
+<body>
+<header class="header">
+        <img src="logocps.png " width="10%">
+    </header>
+<main>
+
+		<hr>
+        <h4 style="color:blue">Add Address</h4>
+        <div id="outer">
+        <form action="saveaddr">
+        <div align="right" id="inner1">
+        <input type="text" name="addr"  placeholder="Enter address to add" id="formtext">
+        </div>
+        <div id="inner2">
+        <input align="center" type="submit" value="add" id="formbutton">
+        </div>
+          </form>
+        </div>
+      
+        
+        <hr color="blue">
+        <h4 style="color:blue">Upload Addresses</h4>
+ 		<div id="outer">
+        <form action="FileUpload" method="post" enctype="multipart/form-data">
+        <div align="right" id="inner1">
+        <input type="file" name="file"  placeholder="Upload file" id="formtext">
+        </div>
+        <div id="inner2">
+        <input align="center" type="submit" value="Upload" id="formbutton">
+        </div>
+        </form>
+        </div>
+		 
+		
+		<hr color="blue">
+         <h4 style="color:blue">Search Address</h4>
+         <div id="outer">
+        <form action="getsimilar">
+        <div align="right" id="inner1">
+        <input type="text" name="word"  class=nameInput placeholder="Enter add to search" id="formtext">
+        </div>
+        <div id="inner2">
+        <input align="center" type="submit" value="search" id="formbutton">
+        </div>
+        </form>
+        </div>
+        
+        
+        <div id="resultdiv" >
+         <ul>
+          <tr th:each="student: ${adlist}">
+	    <li><td th:text="${student.addr}" /></li>
+	    </tr>
+	     </ul>	
+         </div>
+        
+     
+        
+		
+        
+       
+		<div style="width: 800px; margin: 0 auto;">
+			<iframe height="275px" width="100%" frameborder="0" scrolling="yes"
+				src="https://developers.google.com/maps/documentation/utils/geocoder/embed">
+			</iframe>
+		</div>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+	</main>
+	<div height="30px"></div>
+<footer id="footer">
+        <center style="color: white;">ThankYou..</center>
+    </footer>
+</body>
+
+</html>
